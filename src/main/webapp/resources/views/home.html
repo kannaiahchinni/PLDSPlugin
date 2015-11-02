@@ -1,0 +1,74 @@
+<div class="row">
+
+
+<div class="col-md-12 vcenter" ng-show="page_loading">
+		<img src="resources/images/spinner.gif" class="center-block"/> 
+</div>
+
+	<div class="col-md-12" ng-hide="page_loading">
+			<div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 form-inline offset3 span6">
+					<div class="form-group">
+						<label for="label for versions">Application Name</label>
+						<select name="applicationName" ng-model="applicationName" class="form-control">
+							<option ng-repeat="option in options" value="{{option}}">{{option.applicationName}}</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="label for versions">Versions</label>
+						<select name="version" ng-model="appVersion" class="form-control">
+							<option ng-repeat="version in versions" value="{{version.version}}">{{version.version}}</option>
+						</select>
+					</div>
+					
+					<!-- <div class="form-group">
+						<label for="label for text input">Account number</label>
+						<input type="text" ng-model="account" class="form-control">
+						<input type="text" ng-model="account" class="form-control">
+					</div> -->
+			
+				<div class="form-group">
+					<button type="button" class="btn btn-primary" ng-click="load()">Load</button>
+				</div>
+			</div>
+			
+			<div class="col-md-12">
+
+			<div ng-switch on="status" class="navigationLinks">
+				<div ng-switch-default class="display-block">
+						<div class="vcenter">Please select application name and version</div>
+						<img src="resources/images/spinner.gif" class="center-block" ng-show="loading_info"/> 
+				
+				</div>
+				<div ng-switch-when="true">
+					<h3>{{appDetails}}</h3>
+					<div class="col-md-6 ">
+						<p>
+							<span ng-repeat="url in menus.urls"><a  ui-sref-active="active" ui-sref="{{url.url}}">{{url.name}} </a>
+							 / </span>
+
+							<!-- <a ui-sref-active="active" ui-sref=".form1">Configuration </a>/
+							<a ui-sref-active="active" ui-sref=".form2">Information</a> / 
+							<a ui-sref-active="active" ui-sref=".form3">Features</a> / 
+							<a ui-sref-active="active" ui-sref=".form4"> Rules</a> -->
+						</p>
+					</div>
+					<div class="col-md-6 text-right text">
+						<ul class="nav navbar-nav navbar-right">
+						<li ng-if="operation ==='copy'"><input type="checkbox" ng-model="configData.newVersion" ng-checked=true ng-click="newVersion()"  /> Adding the new version</li>
+        				<li ng-show="state" ng-click="edit()"><i class="glyphicon glyphicon-pencil"> </i></li>
+      				   <li ng-show="state" ng-click="copy()"><i class="glyphicon glyphicon-copyright-mark"> </i></li>
+      				   <li ng-if="operation === 'none'" ng-click="remove()"><i class="glyphicon glyphicon-trash"> </i></li>
+      				   <li ng-if="operation === 'copy' || operation === 'edit'"><input type="button" class="btn btn-info" value="Cancel" ng-click="remove()"></li>
+      				   <li ng-hide="operation=='none'"><input type="button" class="btn btn-info" value="Save" ng-click="saveData()"></li>
+     					 </ul>		
+					
+					</div>
+				</div>
+			</div>
+
+			<div id="form-views" ui-view></div>
+			</div>
+	</div>
+
+</div>

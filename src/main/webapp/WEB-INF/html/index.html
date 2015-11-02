@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PLDS Plugin Automation</title>
+<link rel="stylesheet" 	href="resources/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/bootstrap/css/custom.css">
+<link href="resources/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+<body ng-app="PLDSPlugin">
+	<header id="header">
+	<nav class="navbar navbar-default">
+  <div class="container-fluid" ng-switch on="showMenu">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/"><span><svg viewBox="0 0 88.8 25" class="icon-avaya">
+							<g>
+								<polygon points="85.2,18 88.8,18 79.8,0 77.3,0 68.4,18 72,18 73.3,15 81.5,15 80.5,13 74.4,13 78.6,3.9"/>
+								<polygon points="9,0 0,18 3.6,18 4.9,15 13.1,15 12.1,13 6.1,13 10.2,3.9 16.8,18 20.4,18 11.5,0"/>
+								<polygon points="43,0 34.1,18 37.7,18 39,15 47.2,15 46.2,13 40.1,13 44.3,3.9 50.9,18 54.5,18 45.5,0"/>
+								<polygon points="33.8,0 27.2,14.4 20.6,0 17,0 26,18 26.1,18 28.3,18 28.5,18 37.4,0"/>
+	    		 	<polygon points="68.2,0 61.4,14.7 55,0 51.4,0 59.6,18.2 56,25 59.5,25 71.8,0"/>
+	    		 </g>
+	     	</svg>    
+      PLDS Plugin Automation</span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+      
+      <ul class="nav navbar-nav navbar-right" ng-switch-default>
+        <li><a ng-href="#/login"><i class="glyphicon glyphicon-log-in"></i> Login</a></li>
+        <li><a ng-href="#/request">Request Login</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" ng-switch-when="true">
+        <li><a><i class="glyphicon glyphicon-user"> </i> {{userName}}</a></li>
+        <li><a ng-href="#/logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+    
+  </div><!-- /.container-fluid -->
+</nav>	
+</header>
+	<section>
+		<div class="container">
+			<ui-view></ui-view>
+		</div>
+		
+	</section>
+	<footer>
+	</footer>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+ <script src="resources/js/angular-ui-router.min.js"></script>
+ <script src="resources/js/angular-sanitize.js"></script>
+     <script src="resources/js/ui-bootstrap-tpls-0.12.1.js"></script>
+<script type="text/javascript" src="resources/directives/logindirective.js"></script>
+<script src="resources/angular/module.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/angular/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/services/PluginService.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/controllers/homeCtrl.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/controllers/modelController.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/controllers/logoutCtrl.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/controllers/requestCtrl.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

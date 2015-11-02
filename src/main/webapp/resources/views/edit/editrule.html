@@ -1,0 +1,77 @@
+<div class="modal-body ">
+	<div class="panel">
+		<div class="modal-title">
+			<h3>
+				<i class="fa fa-tachometer fa-2x"></i> Edit/New Rule
+			</h3>
+		</div>
+		<div class="panel-body ">
+			<form class="form-horizontal">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Product_info_id</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.product_info_id"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Version</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.version"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Rule</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.rule"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Action Type</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.action_type"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Unit Action Id</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.unitAction_id"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Unit Action Type</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.unitAction_Type"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Feature Name</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.feature_Name"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">To type</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.to_type"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">To type setting</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.to_type_setting"
+							class="form-control" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">Message Code</label>
+						<div class="col-xs-6"><textarea rows="6" ng-model="rule.messageCode"
+								class="form-control"> </textarea></div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-xs-4 control-label">PLDS Release</label>
+						<div class="col-xs-6"><input type="text" ng-model="rule.pld_release"
+							class="form-control" /></div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+	<button class="btn" ng-click="save()">Save</button>
+</div>
