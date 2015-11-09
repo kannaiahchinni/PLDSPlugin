@@ -28,7 +28,7 @@
 					</div> -->
 			
 				<div class="form-group">
-					<button type="button" class="btn btn-primary" ng-click="load()">Load</button>
+					<button type="button" class="btn btn-primary" ng-click="load()" ng-disabled="(applicationName === undefined || appVersion === undefined || configData.length < 0)">Load</button>
 				</div>
 			</div>
 			
@@ -36,7 +36,7 @@
 
 			<div ng-switch on="status" class="navigationLinks">
 				<div ng-switch-default class="display-block">
-						<div class="vcenter">Please select application name and version</div>
+						<div class="vcenter">{{message}}</div>
 						<img src="resources/images/spinner.gif" class="center-block" ng-show="loading_info"/> 
 				
 				</div>
@@ -55,7 +55,7 @@
 					</div>
 					<div class="col-md-6 text-right text">
 						<ul class="nav navbar-nav navbar-right">
-						<li ng-if="operation ==='copy'"><input type="checkbox" ng-model="configData.newVersion" ng-checked=true ng-click="newVersion()"  /> Adding the new version</li>
+						<li ng-if="operation ==='copy'"><input type="checkbox" ng-model="configData.newVersion" ng-checked="true" data-ng-init="configData.newVersion='true'"/> Adding the new version</li>
         				<li ng-show="state" ng-click="edit()"><i class="glyphicon glyphicon-pencil"> </i></li>
       				   <li ng-show="state" ng-click="copy()"><i class="glyphicon glyphicon-copyright-mark"> </i></li>
       				   <li ng-if="operation === 'none'" ng-click="remove()"><i class="glyphicon glyphicon-trash"> </i></li>

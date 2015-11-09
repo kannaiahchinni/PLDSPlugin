@@ -17,11 +17,12 @@
 		$scope.appDetails =  null;
 		$scope.operation = "none";
 		$scope.page_loading = true;
-		$scope.configData.newVersion = true;
+		//$scope.configData.newVersion = true;
+		$scope.message = "Please select Application Name and Version";
+		$scope.check =0;
 		
 
 		$scope.newVersion = function(){
-			//$log.debug($scope.configData.newVersion);
 			if($scope.configData.newVersion){
 				
 				/*	$scope.configData ={};
@@ -49,9 +50,17 @@
 			}*/
 		}
 		
-		$scope.$watch('configData.newVersion', function(){
-			/*$log.debug('new data '+$scope.configData.newVersion);
-			if(!$scope.configData.newVersion && $scope.configData.newVersion != undefined){
+		$scope.$watch('configData.newVersion', function(newValue, oldValue){
+			$log.debug("oldValue : "+ oldValue +"newValue :"+newValue);
+			if(newValue && newValue != undefined){
+				$window.confirm(" Do you want to add the new application to the PLDS system");
+				if($scope.configData.size < 0)
+					$scope.configData = $scope.copiedConfigData;
+			}else if(oldValue != undefined){
+				$scope.configData = {};
+			}
+			$log.debug('new data '+$scope.configData.newVersion);
+			/*if(!$scope.configData.newVersion && $scope.configData.newVersion != undefined){
 				$window.confirm(" Do you want to add the new application to the PLDS system");
 					$scope.configData={};
 			}else{
@@ -75,8 +84,11 @@
 
 		$scope.load = function(){
 			$scope.loading_info = true;
+			$scope.configData.newVersion ="true";
 			$scope.operation = "none";
 			loaded= true;
+			$scope.configData = {};
+			$scope.message = "Please wait .. Loading Application information ...";
 			
 			PluginService.appInfo(angular.fromJson($scope.applicationName).appId,$scope.appVersion).then(function(response){
 				
@@ -87,7 +99,7 @@
 				$scope.state = true;
 				$scope.loading_info = true;
 				$location.path("/home/form1");
-			
+				$scope.message =""
 			});
 			
 			
@@ -169,16 +181,27 @@
 				if($scope.operation == "copy"){
 
 					PluginService.save($scope.configData).then(function(response){
-						$scope.navigate();
+						if(response.statusText === "OK"){
+							toastr.success("Data Saved successfully and navigating to view page ... ");
+							$scope.navigate();
+						}else{
+							toastr.error("some error occured while saving data..  ");
+						}
 					});
 				}
 				else if($scope.operation == "edit"){
 					PluginService.update($scope.configData).then(function(response){
-						$scope.navigate();
+						if(response.statusText === "OK"){
+							toastr.success("Data Saved successfully and navigating to view page ... ");
+							$scope.navigate();
+						}else{
+							toastr.error("some error occured while saving data..  ");
+						}
 					});
 				}
 			}else{
-				$scope.navigate();
+				toastr.warning("Hi.. You haven't done any modifications in data.. Please do the changes before saving data...");
+				//$scope.navigate();
 			}
 			
 		};
